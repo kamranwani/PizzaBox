@@ -1,4 +1,6 @@
 <?php
+include'config/db_connect.php';
+
 $email=$pizzaType=$ingredients='';
 $errors=array("email"=>'',"pizzaType"=>'',"ingredients"=>'');
 if(isset($_POST['submit'])){
@@ -11,7 +13,7 @@ if(isset($_POST['submit'])){
         echo "Enter Pizza Type";
     }else{
         $pizzaType= htmlspecialchars($_POST['pizza']);
-        if(!preg_match('/^[a-zA-Z]+$/',$pizzaType)){
+        if(!preg_match('/^([a-zA-Z\s]+)(\s*[a-zA-Z\s]*)*$/',$pizzaType)){
             $errors['pizzaType']= "Enter a Valid Pizza Title";
         };
     } 
@@ -26,7 +28,19 @@ if(isset($_POST['submit'])){
     if(array_filter($errors)){
         echo 'There are Errors in the form';
     }  else{
-        header('Location: index.php');
+       $email = mysqli_real_escape_string($connect,$_POST['email']);
+       $pizzaType=mysqli_real_escape_string($connect,$_POST['pizza']);
+       $ingredients=mysqli_real_escape_string($connect,$_POST['ingredients']);
+
+        //create sql
+        $sql="INSERT INTO pizzas(title,email,ingredients) VALUES('$pizzaType','$email','$ingredients')";
+
+        //save into db and check
+        if(mysqli_query($connect,$sql)){
+            header('Location: index.php');  
+        }else{
+            echo 'Error in saving'. mysqli_error($connect);
+        }
     } 
 }
 ?>

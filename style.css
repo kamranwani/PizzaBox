@@ -89,11 +89,12 @@ form input {
 .addPizza:hover,
 .moreInfo input:hover {
   background-color: rgba(255, 68, 0, 0.9);
+  cursor: pointer;
 }
 footer {
   color: grey;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 30px;
   padding: 20px 10px;
 }
 footer h2 {
@@ -109,19 +110,25 @@ footer h2 {
 
 /* rendering cards styling */
 .wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
   color: gray;
   padding: 0px 30px;
-  justify-content: space-around;
 }
 
 .pizzaCard {
   background-color: #fff;
-  width: 30%;
   text-align: center;
   padding: 10px 20px;
   border-radius: 3px;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.moreInfo {
-  margin-top: 20px;
+
+.pizza_LI li {
+  list-style: none;
 }
