@@ -33,13 +33,16 @@ header {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .addPizza {
+  display: block;
+  width: 10%;
   background-color: rgba(255, 68, 0, 0.445);
-  color: black;
-  padding: 3px 6px;
+  color: #fff;
+  padding: 10px;
   border: none;
   border-radius: 2px;
-  height: 40px;
+  height: 20px;
   text-decoration: none;
+  text-align: center;
   /* margin: 100px 30px 0px 0px; */
 }
 .formContainer {
@@ -163,4 +166,21 @@ footer h2 {
 }
 .singlePizzaCard p {
   margin-top: 10px;
+}
+
+.singlePizzaCard form input {
+  display: block;
+  width: 30%;
+  background-color: rgba(255, 0, 0, 0.445);
+  color: #fff;
+
+  border: none;
+  border-radius: 2px;
+
+  text-decoration: none;
+  text-align: center;
+}
+.singlePizzaCard form input:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+  cursor: pointer;
 }
